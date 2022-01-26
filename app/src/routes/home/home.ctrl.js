@@ -1,3 +1,6 @@
+const User = require("../../modles/users");
+const UserStorage = require("../../modles/UserStorage");
+
 const output = {
     home : function(req,res){
         res.render("home/index");
@@ -10,7 +13,9 @@ const output = {
 
 const process = {
     login : function(req,res){
-        console.log(req.body);
+        const user = new User(req.body);
+        const response = user.login();
+        return res.json(response);      
     }
 }
 
