@@ -18,6 +18,11 @@ class User{
         }
         return {success : false, msg : "존제하지 않는 아이디 입니다."};
     }
-}
 
+    register(){
+        const body = this.body;
+        const response = UserStorage.save(this.body);
+        return response;
+    }
+}
 module.exports = User;
