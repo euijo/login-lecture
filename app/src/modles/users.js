@@ -1,4 +1,4 @@
-const bodyParser = require("body-parser");
+const {response} = require("express");
 const UserStorage = require("./UserStorage");
 
 class User{
@@ -6,9 +6,9 @@ class User{
         this.body = body;
     }
 
-    login(){
+    async login(){
         const body = this.body;
-        const {id, password} = UserStorage.getUserInfo(body.id);
+        const {id, password} = await UserStorage.getUserInfo(body.id);
 
         if(id){
             if(id === body.id && password === body.password){
